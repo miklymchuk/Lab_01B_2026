@@ -14,6 +14,11 @@ public class PassFailActivity extends GradedActivity {
     public PassFailActivity(double minPassingScore) {
         this.minPassingScore = minPassingScore;
     }
+    
+    public double getPassingScore() {
+        return minPassingScore;
+    }
+    
     public char getGrade() {
         if (score > minPassingScore) {
             return 'P';

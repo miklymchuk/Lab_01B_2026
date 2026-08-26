@@ -17,5 +17,13 @@ public class Mavenproject1 {
         System.out.println("Each question counts " + a.getPointsEach() + " points");
         System.out.println("The exam score is " + a.getScore());
         System.out.println("The exam grade is " + a.getGrade());
+        
+        PassFailExam b = new PassFailExam(100, 25, 60.0);
+        System.out.println("How many questions are on the final exam? " + b.getNumQuestions());
+        System.out.println("How many questions did the student miss? " + b.getNumMissed());
+        System.out.println("What is the minimum passing score? " + b.getPassingScore());
+        System.out.println("Each question counts " + b.getPointsEach() + " points");
+        System.out.println("The exam score is " + b.getScore());
+        System.out.println("The exam grade is " + b.getGrade());
     }
 }
