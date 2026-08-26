@@ -9,14 +9,19 @@ package com.mycompany.mavenproject1;
  * @author 6312398
  */
 public class FinalExam extends GradedActivity {
-    int numQuestions;
-    double pointsEach;
-    int numMissed;
+    protected int numQuestions;
+    protected double pointsEach;
+    protected int numMissed;
     
     public FinalExam(int numQuestions, int numMissed) {
         this.numQuestions = numQuestions;
         this.numMissed = numMissed;
         pointsEach = 100/numQuestions;
+        score = pointsEach * (numQuestions - numMissed);
+    }
+    
+    public double getNumQuestions() {
+        return numQuestions;
     }
     
     public double getPointsEach() {

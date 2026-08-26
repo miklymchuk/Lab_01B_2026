@@ -9,7 +9,7 @@ package com.mycompany.mavenproject1;
  * @author 6312398
  */
 public class GradedActivity {
-    double score;
+    protected double score;
     
     public void setScore(double score) {
         this.score = score;
@@ -20,17 +20,17 @@ public class GradedActivity {
     }
     
     public char getGrade() {
-        if (score > 59) {
-            return 'D';
-        }
-        if (score > 69) {
-            return 'C';
+        if (score > 90) {
+            return 'A';
         }
         if (score > 84) {
             return 'B';
         }
-        if (score > 90) {
-            return 'A';
+        if (score > 69) {
+            return 'C';
+        }
+        if (score > 59) {
+            return 'D';
         }
         return 'F';
     }
