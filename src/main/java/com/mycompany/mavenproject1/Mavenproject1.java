@@ -25,5 +25,19 @@ public class Mavenproject1 {
         System.out.println("Each question counts " + b.getPointsEach() + " points");
         System.out.println("The exam score is " + b.getScore());
         System.out.println("The exam grade is " + b.getGrade());
+        
+        Essay c = new Essay();
+        c.setGrammar(25);
+        c.setSpelling(18);
+        c.setCorrectLength(20);
+        c.setContent(25);
+        c.setScore(25, 18, 20, 25);
+        System.out.println("Term paper:");
+        System.out.println("Grammar points: " + c.getGrammar());
+        System.out.println("Spelling points: " + c.getSpelling());
+        System.out.println("Length points: " + c.getCorrectLength());
+        System.out.println("Content points: " + c.getContent());
+        System.out.println("Total points: " + c.getScore());
+        System.out.println("Grade: " + c.getGrade());
     }
 }
