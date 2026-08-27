@@ -8,36 +8,67 @@ package com.mycompany.mavenproject1;
  *
  * @author 6312398
  */
+import java.util.Scanner;
+
 public class Mavenproject1 {
 
     public static void main(String[] args) {
-        FinalExam a = new FinalExam(100, 25);
-        System.out.println("How many questions are on the final exam? " + a.getNumQuestions());
-        System.out.println("How many questions did the student miss? " + a.getNumMissed());
-        System.out.println("Each question counts " + a.getPointsEach() + " points");
-        System.out.println("The exam score is " + a.getScore());
-        System.out.println("The exam grade is " + a.getGrade());
+        Scanner input = new Scanner(System.in);
+
+        //step 2: FinalExam test
+        System.out.print("How many questions are on the final exam? ");
+        int questions = input.nextInt();
+        System.out.print("How many questions did the student miss? ");
+        int missed = input.nextInt();
+
+        FinalExam finalExam = new FinalExam(questions, missed);
+
+        System.out.print(String.format("Each question counts %s points.", finalExam.getPointsEach()));
+        System.out.print(String.format("\nThe exam score is %s", finalExam.getScore()));
+        System.out.println(String.format("\nThe exam grade is %s", finalExam.getGrade()));
+
+        //step 3: PassFailActivity and PassFailExam test
+        System.out.print("\nHow many questions are on the final exam? ");
+        questions = input.nextInt();
+        System.out.print("How many questions did the student miss? ");
+        missed = input.nextInt();
+        System.out.print("what is the minimum passing score? ");
+        int minPassing = input.nextInt();
+
+        PassFailExam PFE = new PassFailExam(questions, missed, minPassing);
+
+        System.out.print(String.format("Each question counts %s points.", PFE.getPointsEach()));
+        System.out.print(String.format("\nThe exam score is %s", PFE.getScore()));
+        System.out.println(String.format("\nThe exam grade is %s", PFE.getGrade()));
+
+        //step 4: Essay test
+        System.out.println("\nTerm paper:");
+        System.out.print("Grammar points: ");
+        double gr = input.nextDouble();
+        System.out.print("Spelling points: ");
+        double sp = input.nextDouble();
+        System.out.print("Length points: ");
+        double len = input.nextDouble();
+        System.out.print("Content points: ");
+        double cnt = input.nextDouble();
+
+        Essay essay = new Essay();
+        essay.setScore(gr, sp, len, cnt);
+
+        System.out.println(String.format("Total points: %s", essay.getScore()));
+        System.out.println(String.format("Grade: %s", essay.getGrade()));
         
-        PassFailExam b = new PassFailExam(100, 25, 60.0);
-        System.out.println("How many questions are on the final exam? " + b.getNumQuestions());
-        System.out.println("How many questions did the student miss? " + b.getNumMissed());
-        System.out.println("What is the minimum passing score? " + b.getPassingScore());
-        System.out.println("Each question counts " + b.getPointsEach() + " points");
-        System.out.println("The exam score is " + b.getScore());
-        System.out.println("The exam grade is " + b.getGrade());
-        
-        Essay c = new Essay();
-        c.setGrammar(25);
-        c.setSpelling(18);
-        c.setCorrectLength(20);
-        c.setContent(25);
-        c.setScore(25, 18, 20, 25);
-        System.out.println("Term paper:");
-        System.out.println("Grammar points: " + c.getGrammar());
-        System.out.println("Spelling points: " + c.getSpelling());
-        System.out.println("Length points: " + c.getCorrectLength());
-        System.out.println("Content points: " + c.getContent());
-        System.out.println("Total points: " + c.getScore());
-        System.out.println("Grade: " + c.getGrade());
-    }
-}
+        //step 5: CoursesGrades test
+        CourseGrades courseGrades = new CourseGrades();
+        GradedActivity lab = new GradedActivity();
+        lab.setScore(85);
+        courseGrades.setLab(lab);
+        courseGrades.setPassFailExam(PFE);
+        courseGrades.setEssay(essay);
+        courseGrades.setFinalExam(finalExam);
+        System.out.println("\n" + courseGrades.toString());
+        //step 6 test
+        System.out.println(String.format("Average score: %s", courseGrades.getAverage()));
+        System.out.println(String.format("Highest score: %s", courseGrades.getHighest().getScore()));
+        System.out.println(String.format("Lowest score: %s", courseGrades.getLowest().getScore()));
+    }    }
