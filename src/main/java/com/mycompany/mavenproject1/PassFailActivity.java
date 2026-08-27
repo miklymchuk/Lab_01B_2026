@@ -19,6 +19,7 @@ public class PassFailActivity extends GradedActivity {
         return minPassingScore;
     }
     
+    @Override
     public char getGrade() {
         if (score > minPassingScore) {
             return 'P';
